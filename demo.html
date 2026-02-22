@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Why Choose Section</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+      }
+
+      /* SECTION */
+
+      .why-choose-section {
+        background: #efefef;
+        padding: 100px 40px;
+      }
+
+      /* CONTAINER */
+
+      .why-container {
+        max-width: 1200px;
+        margin: auto;
+        display: flex;
+        align-items: flex-start;
+        gap: 60px;
+      }
+
+      /* LEFT IMAGE (STICKY) */
+
+      .why-left {
+        flex: 1;
+        position: sticky;
+        top: 100px;
+        height: fit-content;
+      }
+
+      .why-left img {
+        width: 100%;
+        border-radius: 20px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      }
+
+      /* RIGHT CONTENT */
+
+      .why-right {
+        flex: 1.2;
+      }
+
+      .why-choose-heading {
+        margin-bottom: 50px;
+        text-align: center;
+      }
+
+      .why-choose-heading h2 {
+        font-size: 40px;
+        margin-bottom: 10px;
+      }
+
+      .why-choose-heading p {
+        color: #666;
+        font-size: 16px;
+      }
+
+      /* STEP WRAPPER */
+
+      .why-choose-wrapper {
+        position: relative;
+      }
+
+      /* STEP ROW */
+
+      .why-choose-row {
+        margin: 20px 0;
+      }
+
+      .why-choose-content {
+        display: flex;
+        align-items: center;
+        position: relative;
+      }
+
+      /* CARD */
+
+      .why-choose-card {
+        background: #f8f8f8;
+        padding: 25px 60px;
+        border-radius: 60px;
+        font-size: 18px;
+        box-shadow: 0 25px 30px rgba(0, 0, 0, 0.08);
+        position: relative;
+        z-index: 2;
+      }
+
+      /* LONG SOFT SHADOW */
+
+      .why-choose-card::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.05);
+        top: 25px;
+        left: 25px;
+        border-radius: 60px;
+        z-index: -1;
+        filter: blur(8px);
+      }
+
+      /* NUMBER BLOCK */
+
+      .why-choose-number {
+        width: 160px;
+        height: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 40px;
+        font-weight: bold;
+        color: white;
+        background: linear-gradient(135deg, #d64a4a, #c43b3b);
+        border-radius: 0 60px 60px 0;
+        margin-left: -40px;
+      }
+
+      /* LEFT ALIGN */
+
+      .why-choose-left .why-choose-content {
+        justify-content: flex-start;
+      }
+
+      .why-choose-left .why-choose-number {
+        border-radius: 60px 0 0 60px;
+        margin-left: 0;
+        margin-right: -40px;
+      }
+
+      /* RIGHT ALIGN */
+
+      .why-choose-right .why-choose-content {
+        justify-content: flex-end;
+      }
+
+      /* COLOR VARIATIONS */
+
+      .why-choose-green {
+        background: linear-gradient(135deg, #9da505, #fbff00);
+      }
+
+      .why-choose-dark {
+        background: linear-gradient(135deg, #6e4620, #ff8614);
+      }
+
+      .why-choose-light {
+        background: linear-gradient(135deg, #b27f7f, #ff2b2b);
+      }
+
+      /* DOTTED CONNECTOR */
+
+      .why-choose-dots {
+        width: 60%;
+        height: 2px;
+        margin: 0px auto;
+        margin-top: 20px;
+        background: repeating-linear-gradient(
+          to right,
+          #9fbfc3 0px,
+          #9fbfc3 6px,
+          transparent 6px,
+          transparent 18px
+        );
+      }
+
+      /* RESPONSIVE */
+
+      @media (max-width: 992px) {
+        .why-container {
+          flex-direction: column;
+        }
+
+        .why-left {
+          position: relative;
+          top: 0;
+          order: 2;
+        }
+
+        .why-right {
+          order: 1;
+        }
+
+        .why-choose-content {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .why-choose-number {
+          margin: 0;
+          border-radius: 50px;
+          width: 100px;
+          height: 70px;
+          font-size: 28px;
+        }
+
+        .why-choose-card {
+          margin-top: 15px;
+          text-align: center;
+          padding: 20px;
+        }
+
+        .why-choose-dots {
+          width: 80%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <section class="why-choose-section">
+      <div class="why-choose-heading">
+        <h2>Why Choose Our Program?</h2>
+        <p>Small batch = Personal attention.</p>
+      </div>
+      <div class="why-container">
+        <!-- LEFT IMAGE -->
+        <div class="why-left">
+          <img src="./img/pandaa (2).jpg" alt="" />
+        </div>
+
+        <!-- RIGHT CONTENT -->
+        <div class="why-right">
+          <div class="why-choose-wrapper">
+            <div class="why-choose-row why-choose-right">
+              <div class="why-choose-content">
+                <div class="why-choose-card">
+                  Japanese to English Teaching Method
+                </div>
+                <div class="why-choose-number">1</div>
+              </div>
+              <div class="why-choose-dots"></div>
+            </div>
+
+            <div class="why-choose-row why-choose-left">
+              <div class="why-choose-content">
+                <div class="why-choose-number">2</div>
+                <div class="why-choose-card">Job-Oriented Training</div>
+              </div>
+              <div class="why-choose-dots"></div>
+            </div>
+
+            <div class="why-choose-row why-choose-right">
+              <div class="why-choose-content">
+                <div class="why-choose-card">Weekend Batches Available</div>
+                <div class="why-choose-number why-choose-green">3</div>
+              </div>
+              <div class="why-choose-dots"></div>
+            </div>
+
+            <div class="why-choose-row why-choose-left">
+              <div class="why-choose-content">
+                <div class="why-choose-number why-choose-dark">4</div>
+                <div class="why-choose-card">Live Interactive Classes</div>
+              </div>
+              <div class="why-choose-dots"></div>
+            </div>
+
+            <div class="why-choose-row why-choose-right">
+              <div class="why-choose-content">
+                <div class="why-choose-card">Weekly Tests & Practice</div>
+                <div class="why-choose-number why-choose-light">5</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
