@@ -14,16 +14,17 @@ body {
   justify-content: space-between;
   align-items: center;
   color: rgb(0, 0, 0);
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 1000;
-  padding: 30px 80px;
+  padding: 0px 80px;
+  background-color: ;
 }
 
 .logo img {
-  width: 270px;
+  width: 170px;
 }
 
 /* Desktop Menu */
