@@ -4,23 +4,35 @@
   padding: 0;
   box-sizing: border-box;
 }
+html,
+body {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  scroll-behavior: smooth;
+}
 body {
   font-family: "Noto Sans JP", sans-serif;
-  scroll-behavior: smooth;
 }
 /*  */
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: rgb(0, 0, 0);
+  color: #000;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 1000;
   padding: 0px 80px;
-  background-color: ;
+  background-color: transparent;
+  transition: all 0.3s ease;
+}
+
+/* When scrolling */
+.header.scrolled {
+  background-color: #ffffff; /* Change to your theme color */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .logo img {
@@ -95,7 +107,7 @@ body {
 
 /* Overlay */
 .overlay {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
@@ -122,7 +134,38 @@ body {
     display: flex;
   }
 }
+.news-ticker {
+  width: 100%;
+  background: #00000089;
+  color: #fff;
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 10px 0;
+  position: absolute;
+  left: 0;
+  top: 110px;
+}
 
+.ticker-wrapper {
+  display: inline-block;
+  padding-left: 100%;
+  animation: scrollText 15s linear infinite;
+}
+
+.ticker-wrapper p {
+  display: inline-block;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+@keyframes scrollText {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
 /*  */
 .hero {
   width: 100%;
@@ -235,6 +278,10 @@ body {
     height: 100%;
     background-size: 100%;
     padding-bottom: 50px;
+  }
+
+  .news-ticker {
+    top: 130px;
   }
 }
 /* ================= SECTION 2 ================= */
@@ -466,7 +513,9 @@ body {
   margin-bottom: 10px;
   font-size: 16px;
 }
-
+.compare-block h4 span {
+  color: #d00000;
+}
 .highlight {
   border-left: 4px solid #d00000;
 }
@@ -1611,6 +1660,7 @@ body {
 .footer-col ul li {
   margin-bottom: 12px;
   font-size: 14px;
+  cursor: pointer;
 }
 
 .footer-col ul li a {
@@ -1630,10 +1680,12 @@ body {
 }
 
 .footer-logo-img {
-  width: 160px;
+  width: 200px;
   object-fit: contain;
 }
-
+.footer-logo-img img {
+  width: 100%;
+}
 /* Optional subtle hover effect */
 .footer-logo-img:hover {
   opacity: 0.9;
@@ -1647,8 +1699,12 @@ body {
   border-top: 1px solid #333;
   font-size: 13px;
   color: #777;
+  font-weight: 400;
 }
-
+.footer-bottom a {
+  color: #777;
+  text-decoration: none;
+}
 /* ================= ANIMATION ================= */
 
 .reveal-up {
