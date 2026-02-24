@@ -1839,3 +1839,16 @@ body {
   width: 350px;
   height: auto;
 }
+.youtube-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 0px;
+  flex-direction: column;
+  gap: 15px;
+}
+.youtube-container a {
+  text-align: center;
+  text-decoration: none;
+  color: #d00000;
+}
