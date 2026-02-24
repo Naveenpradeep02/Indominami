@@ -1828,3 +1828,14 @@ body {
     gap: 40px;
   }
 }
+.video-container {
+  max-width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.video-container video {
+  width: 350px;
+  height: auto;
+}
