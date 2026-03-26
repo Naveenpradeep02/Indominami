@@ -94,9 +94,9 @@
           </li>
         </ul>
 
-        <a href="#contact" class="hero-btn"
-          >Start your Japanese journey today
-        </a>
+        <div class="hero-btn" id="heroOpenBtn">
+          Start your Japanese journey today
+        </div>
       </div>
       <div class="overlay-hero"></div>
     </div>
@@ -459,7 +459,7 @@
 
         <h3 class="cta-question">Are you ready?</h3>
 
-        <a href="#contact" class="cta-button">Apply Now</a>
+        <a href="#contact" class="cta-button" id="ctaPopupBtn">Apply Now</a>
       </div>
     </section>
 
@@ -499,13 +499,14 @@
               <input type="text" name="name" placeholder="Name*" required />
               <input type="tel" name="mobile" placeholder="Mobile*" required />
               <input type="email" name="email" placeholder="Email*" required />
-              <input
-                type="text"
-                name="profession"
-                placeholder="Current Profession*"
-                required
-              />
-              <textarea name="message" placeholder="Message"></textarea>
+              <select name="profession" required>
+                <option value="" disabled selected>Current Profession*</option>
+                <option value="Student">Student</option>
+                <option value="Working">Working</option>
+                <option value="Fresher">Fresher</option>
+                <option value="Career Gap">Career Gap</option>
+              </select>
+              <textarea name="message" placeholder="Reason "></textarea>
 
               <button type="submit" id="submitBtn">Enroll Now</button>
             </form>
@@ -665,7 +666,38 @@
         </a>
       </div>
     </div>
+    <!-- Trigger Button -->
+    <button id="openPopupBtn">Open Form</button>
+    <!-- Popup Overlay -->
+    <div class="popup-overlay" id="popupOverlay">
+      <div class="popup-form-container">
+        <button class="popup-close" id="closePopup">&times;</button>
 
+        <div class="popup-form">
+          <h3>Get Complete Details</h3>
+
+          <form id="popup-contactform">
+            <input type="text" name="name" placeholder="Name*" required />
+            <input type="tel" name="mobile" placeholder="Mobile*" required />
+            <input type="email" name="email" placeholder="Email*" required />
+
+            <select name="profession" required>
+              <option value="" disabled selected>Current Profession*</option>
+              <option value="Student">Student</option>
+              <option value="Working">Working</option>
+              <option value="Fresher">Fresher</option>
+              <option value="Career Gap">Career Gap</option>
+            </select>
+
+            <textarea name="message" placeholder="Reason "></textarea>
+
+            <button type="submit" id="popup-submitBtn">Enroll Now</button>
+          </form>
+
+          <p id="popup-formMessage"></p>
+        </div>
+      </div>
+    </div>
     <script>
       const form = document.getElementById("contactform");
       const btn = document.getElementById("submitBtn");
@@ -727,6 +759,107 @@
             btn.innerText = "Enroll Now";
           });
       });
+    </script>
+    <script>
+      (function () {
+        const popupEl = document.getElementById("popupOverlay");
+        const popupOpenBtn = document.getElementById("openPopupBtn");
+        const popupCloseBtn = document.getElementById("closePopup");
+
+        const popupForm = document.getElementById("popup-contactform");
+        const popupSubmitBtn = document.getElementById("popup-submitBtn");
+        const popupMessageBox = document.getElementById("popup-formMessage");
+
+        const popupScriptURL =
+          "https://script.google.com/macros/s/AKfycbxY9SLUsCz0S8W-qN3ObOhs97krPsaxTlcnooXNLp8n7GfMgrVXSmULBH9P22j9ZvFA/exec";
+
+        // 🔥 Auto open after 10 seconds
+        setTimeout(() => {
+          popupEl.classList.add("active");
+        }, 10000);
+
+        // 🔥 Manual open
+        const heroBtn = document.getElementById("heroOpenBtn");
+
+        if (heroBtn) {
+          heroBtn.addEventListener("click", () => {
+            popupEl.classList.add("active");
+          });
+        }
+        const ctaBtn = document.getElementById("ctaPopupBtn");
+
+        if (ctaBtn) {
+          ctaBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            popupEl.classList.add("active");
+          });
+        }
+        // 🔥 Close popup
+        popupCloseBtn.addEventListener("click", () => {
+          popupEl.classList.remove("active");
+        });
+
+        // 🔥 Close on outside click
+        popupEl.addEventListener("click", (e) => {
+          if (e.target === popupEl) {
+            popupEl.classList.remove("active");
+          }
+        });
+
+        // 🔥 Form Submit
+        popupForm.addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const popupFormData = new FormData(popupForm);
+
+          const name = popupFormData.get("name").trim();
+          const mobile = popupFormData.get("mobile").trim();
+          const email = popupFormData.get("email").trim();
+          const profession = popupFormData.get("profession").trim();
+
+          if (name === "") {
+            alert("Name is required");
+            return;
+          }
+
+          if (!/^[0-9]{10}$/.test(mobile)) {
+            alert("Mobile must be 10 digits");
+            return;
+          }
+
+          if (!/^\S+@\S+\.\S+$/.test(email)) {
+            alert("Enter valid email");
+            return;
+          }
+
+          if (profession === "") {
+            alert("Profession is required");
+            return;
+          }
+
+          popupSubmitBtn.disabled = true;
+          popupSubmitBtn.innerText = "Submitting...";
+
+          fetch(popupScriptURL, {
+            method: "POST",
+            body: popupFormData,
+          })
+            .then(() => {
+              popupMessageBox.style.color = "green";
+              popupMessageBox.innerText = "Form submitted successfully!";
+              popupForm.reset();
+              popupEl.classList.remove("active");
+            })
+            .catch(() => {
+              popupMessageBox.style.color = "red";
+              popupMessageBox.innerText = "Something went wrong!";
+            })
+            .finally(() => {
+              popupSubmitBtn.disabled = false;
+              popupSubmitBtn.innerText = "Enroll Now";
+            });
+        });
+      })();
     </script>
     <script>
       function reveal() {
